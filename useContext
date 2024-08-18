@@ -1,0 +1,95 @@
+import React, { Component, createContext, useContext, useState } from 'react';
+
+// export default function Example() {
+//     const [User,setUser] = useState('thilakar')
+//     return (
+//         <div>
+//             <h1>example 1</h1>
+//             {/* <button onClick={()=>{setUser("frontend")}}>button</button> */}
+//             <Component1 user={User} />
+//         </div>
+//     )
+// }
+// function Component1({ user }) {
+  //   console.log("component1",user);
+    //return (
+      //  <div>
+        //     <h2>component1</h2>
+          //   <Component2 user={user} />
+         //</div>
+    //)
+// }
+// function Component2({ user }) {
+//     return (
+//         <div>
+//             <h2>component2</h2>
+//             <Component3 user={user} />
+//         </div>
+//     )
+// }
+// function Component3({ user }) {
+//     return (
+//         <div>
+//             <h2>component3</h2>
+//             <Component4 user={user} />
+//         </div>
+//     )
+// }
+// function Component4({ user }) {
+//     return (
+//         <div>
+//             <h2>component4</h2>
+//             <h1>{user is ${user}}</h1>
+//         </div>
+//     )
+// }
+
+const userContext = createContext()
+console.log("userContext", userContext);
+
+export default function Example2() {
+    const [User, setUser] = useState('thilakar')
+    return (
+        <>
+            <button onClick={()=>{setUser("frontend")}}>button</button>
+            <userContext.Provider value={User}>
+                <h1>Example2</h1>
+                <Component1 />
+            </userContext.Provider>
+        </>
+    )
+}
+function Component1() {
+    // console.log("component1", user);
+    return (
+        <div>
+            <h2>component1</h2>
+            <Component2 />
+        </div>
+    )
+}
+function Component2() {
+    return (
+        <div>
+            <h2>component2</h2>
+            <Component3 />
+        </div>
+    )
+}
+function Component3() {
+    return (
+        <div>
+            <h1>npm install react-apexcharts</h1>
+            <Component4 />
+        </div>
+    )
+}
+function Component4() {
+    const User = useContext(userContext)
+    return (
+        <div>
+            <h2>component4</h2>
+            <h1>{user is ${User}}</h1>
+        </div>
+    )
+}
